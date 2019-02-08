@@ -1,0 +1,38 @@
+[
+	{
+		"model": "products.product",
+		"pk": 1,
+		"fields": {
+			"name": "vocado",
+			"description": "la",
+			"cost": "100"
+		}
+	},
+	{
+		"model": "products.product",
+		"pk": 2,
+		"fields": {
+			"name": "Banana",
+			"description": "laaaaa",
+			"cost": "100"
+		}
+	},
+	{
+		"model": "products.product",
+		"pk": 3,
+		"fields": {
+			"name": "onion",
+			"description": "la",
+			"cost": "100"
+		}
+	},
+	{
+		"model": "products.product",
+		"pk": 4,
+		"fields": {
+			"name": "noAvocado",
+			"description": "la",
+			"cost": "100"
+		}
+	}
+]

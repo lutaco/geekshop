@@ -9,4 +9,20 @@
     <h1 class="page__title">
        	Каталог
     </h1>
+    <div class="products">
+    	{% for object in object_list %}
+		<div class="products__item">
+			<span class="products__item-name">
+				{{ object.name|title }}
+			</span>	
+			<span class="products__item-description">
+				{{ object.description }}
+			</span>
+			<span class="products__item-cost">
+				{{ object.cost }}
+			</span>
+			<a href="{% url 'detail' pk=object.id %}" class="product__item-lind">Ссылка на {{ object.name|lower }}</a>
+		</div>
+		{% endfor %}
+    </div>
 {% endblock %}
