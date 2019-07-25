@@ -1,0 +1,13 @@
+{% extends 'server/master.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Добавить продукт
+{% endblock %}
+
+{% block content %}
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {% include 'server/form.html' with form=form %}
+    </form>
+{% endblock %}

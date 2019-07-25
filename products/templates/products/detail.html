@@ -2,7 +2,11 @@
 {% load staticfiles %}
 
 {% block title %}
-    Главная страница
+    Информация о продукте
+{% endblock %}
+
+{% block page_static %}
+<link rel="stylesheet" href="{% static 'products/css/detail.css' %}">
 {% endblock %}
 
 {% block content %}

@@ -2,7 +2,11 @@
 {% load staticfiles %}
 
 {% block title %}
-    Главная страница
+	Каталог продуктов
+{% endblock %}
+
+{% block page_static %}
+<link rel="stylesheet" href="{% static 'products/css/list.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -21,7 +25,7 @@
 			<span class="products__item-cost">
 				{{ object.cost }}
 			</span>
-			<a href="{% url 'detail' pk=object.id %}" class="product__item-lind">Ссылка на {{ object.name|lower }}</a>
+			<a href="{% url 'detail' pk=object.id %}" class="products__item-link">Ссылка на {{ object.name|lower }}</a>
 		</div>
 		{% endfor %}
     </div>
