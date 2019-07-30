@@ -25,7 +25,7 @@
 			<span class="products__item-cost">
 				{{ object.cost }}
 			</span>
-			<a href="{% url 'detail' pk=object.id %}" class="products__item-link">Ссылка на {{ object.name|lower }}</a>
+			<a href="{% url 'products:detail' pk=object.id %}" class="products__item-link">Ссылка на {{ object.name|lower }}</a>
 		</div>
 		{% endfor %}
     </div>
