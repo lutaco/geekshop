@@ -18,12 +18,18 @@ from django.urls import path, include
 from django.conf.urls import static
 from django.conf import settings
 
+
+router = [
+    path('products/', include('products.routes'))
+]
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls')),
     path('accounts/', include('accounts.urls')),
     path('products/', include('products.urls')),
     path('categories/', include('products.urls.categories')),
+    path('api/', include(router)),
 ]
 
 if settings.DEBUG:

@@ -3,6 +3,31 @@ from django.urls import reverse
 from products.models import Category
 from products.forms import CategoryModelForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.core.paginator import Paginator
+
+
+class CategoriesList(ListView):
+	model = Category
+	template_name = 'categories/list.html'
+
+
+class CategoryDetail(DetailView):
+
+	model = Category
+	template_name = 'categories/detail.html'
+
+	def get_context_data(self, **kwargs):
+
+		key = self.context_object_name if self.context_object_name else 'object'
+
+		obj = kwargs.get(key)
+		products = obj.product_set.all()
+		page_obj = Paginator(products, 4)
+
+		page = self.request.GET.get('page')
+		page_obj = page_obj.get_page(page)
+
+		return {key: obj, 'products': page_obj}
 
 
 def category_create_view(request):
