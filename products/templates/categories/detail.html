@@ -1,5 +1,6 @@
 {% extends 'server/master.html' %}
 {% load staticfiles %}
+{% load paginator %}
 
 {% block title %}
 	Каталог продуктов
@@ -14,9 +15,9 @@
        	Каталог
     </h1>
     <div class="products">
-    	{% for object in products %}
-            {% include 'includes/product_item.html' with image=object.image name=object.name description=object.description cost=object.cost id=object.id %}
+    	{% for product in object.product_set.all|paginate:request.GET %}
+            {% include 'includes/product_item.html' with image=product.image name=product.name description=product.description cost=product.cost id=product.id %}
 		{% endfor %}
     </div>
-    {% include 'server/includes/paginator.html' with page=products page_range=products.paginator.page_range %}
+        {% pagination object.product_set.all %}
 {% endblock %}

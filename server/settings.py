@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+PAGINATION_PAGE_SIZE = 8
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'mainapp',
     'products',
     'accounts',
+    'paginator',
 ]
 
 AUTH_USER_MODEL = 'accounts.AccountUser'

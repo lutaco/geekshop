@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from products.models import Category
 from products.forms import CategoryModelForm
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.core.paginator import Paginator
+from django.views.generic import ListView, DetailView
+from django.contrib.auth.decorators import login_required
 
 
 class CategoriesList(ListView):
@@ -16,20 +16,8 @@ class CategoryDetail(DetailView):
 	model = Category
 	template_name = 'categories/detail.html'
 
-	def get_context_data(self, **kwargs):
 
-		key = self.context_object_name if self.context_object_name else 'object'
-
-		obj = kwargs.get(key)
-		products = obj.product_set.all()
-		page_obj = Paginator(products, 4)
-
-		page = self.request.GET.get('page')
-		page_obj = page_obj.get_page(page)
-
-		return {key: obj, 'products': page_obj}
-
-
+@login_required(login_url=reverse_lazy('accounts:login'))
 def category_create_view(request):
 
 	success_url = reverse('products')
@@ -47,6 +35,7 @@ def category_create_view(request):
 	return render(request, 'categories/create.html', {'form': form})
 
 
+@login_required(login_url=reverse_lazy('accounts:login'))
 def category_update_view(request, pk):
 
 	obj = get_object_or_404(Category, pk=pk)

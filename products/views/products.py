@@ -4,6 +4,7 @@ from products.forms import ProductModelForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.http import JsonResponse
 from django.forms.models import model_to_dict
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class RestProductList(ListView):
@@ -37,28 +38,30 @@ class RestProductList(ListView):
 		return JsonResponse(context)
 
 
-
 class ProductList(ListView):
 
 	paginate_by = 4
 	model = Product
 	template_name = 'products/index.html'
+	login_url = reverse_lazy('accounts:login')
 
 
-class ProductUpdate(UpdateView):
+class ProductUpdate(LoginRequiredMixin, UpdateView):
 
 	success_url = reverse_lazy('products:list')
 	form_class = ProductModelForm
 	template_name = 'products/update.html'
 	model = Product
+	login_url = reverse_lazy('accounts:login')
 
 
-class ProductCreate(CreateView):
+class ProductCreate(LoginRequiredMixin, CreateView):
 
 	form_class = ProductModelForm
 	success_url = reverse_lazy('products:list')
 	template_name = 'products/create.html'
 	model = Product
+	login_url = reverse_lazy('accounts:login')
 
 
 class ProductDetail(DetailView):
@@ -67,8 +70,9 @@ class ProductDetail(DetailView):
 	model = Product
 
 
-class ProductDelete(DeleteView):
+class ProductDelete(LoginRequiredMixin, DeleteView):
 
 	success_url = reverse_lazy('products:list')
 	template_name = 'products/delete.html'
 	model = Product
+	login_url = reverse_lazy('accounts:login')
