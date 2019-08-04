@@ -4,6 +4,14 @@ from products.models import Category
 from products.forms import CategoryModelForm
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
+from products.serializers import CategorySerializer
+from rest_framework.viewsets import ModelViewSet
+
+
+class CategoryViewSet(ModelViewSet):
+
+	queryset = Category.objects.all()
+	serializer_class = CategorySerializer
 
 
 class CategoriesList(ListView):

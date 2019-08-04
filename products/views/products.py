@@ -5,6 +5,14 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.http import JsonResponse
 from django.forms.models import model_to_dict
 from django.contrib.auth.mixins import LoginRequiredMixin
+from products.serializers import ProductSerializer
+from rest_framework.viewsets import ModelViewSet
+
+
+class ProductViewSet(ModelViewSet):
+
+	queryset = Product.objects.all()
+	serializer_class = ProductSerializer
 
 
 class RestProductList(ListView):
