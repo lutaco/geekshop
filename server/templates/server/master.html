@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'server/css/master.css' %}">
+    {% block page_static %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="page">
+        {% block header %}
+            {% include 'server/includes/inc_header.html' %}
+        {% endblock %}
+        <div class="page__content">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+        {% block footer %}
+            <footer class="page__footer">
+                <span class="page__copyright">
+                    © GeekBrains
+                </span>
+            </footer>
+        {% endblock %}
+    </div>
+
+    {% block page_js %}
+    {% endblock %}
+
+</body>
+
+</html>

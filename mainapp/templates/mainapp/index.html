@@ -1,0 +1,20 @@
+{% extends 'server/master.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Главная страница
+{% endblock %}
+{% block content %}
+    <h1 class="page__title">
+        Главная страница
+    </h1>
+    <div class="page__preview">
+        <span class="username">
+            Привет {{ name }}!
+        </span>
+        <img src="" alt="" class="branding__background">
+        <span class="branding__snippet">
+            Главная страница Интернет-витрины
+        </span>
+    </div>
+{% endblock %}

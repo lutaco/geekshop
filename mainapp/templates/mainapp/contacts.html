@@ -1,0 +1,21 @@
+{% extends 'server/master.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Главная страница
+{% endblock %}
+
+{% block content %}
+    <h1 class="page__title">
+        Контакты
+    </h1>
+    <ul class="contacts-list">
+        {% for item in contacts %}
+        <li>
+            <span>
+               {{ item }} 
+            </span>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

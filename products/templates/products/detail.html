@@ -1,0 +1,27 @@
+{% extends 'server/master.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Информация о продукте
+{% endblock %}
+
+{% block page_static %}
+<link rel="stylesheet" href="{% static 'products/css/detail.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="product">
+	<h1 class="product__name">
+		{{ object.name }}
+	</h1>	
+	<span class="product__description">
+		{{ object.description }}
+	</span>
+	<span class="product__cost">
+		{{ object.cost }}
+	</span>
+	{% if object.image %}
+	<img class="product__image" src="/media/{{ object.image }}">
+	{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% load staticfiles %}
+
+<div class="products__item">
+    {% if image %}
+        <img class="products__item-image" src="{{ image.url }}" alt="{{ name }}">
+    {% else %}
+        <img class="products__item-image products__item-image_empty" src="{% static 'products/images/empty.jpg' %}" alt="empty">
+    {% endif %}
+    <span class="products__item-name">
+        {{ name|title }}
+    </span>
+    <span class="products__item-description">
+        {{ description }}
+    </span>
+    <span class="products__item-cost">
+        {{ cost }}
+    </span>
+    <a href="{% url 'products:detail' pk=id %}" class="products__item-link">Ссылка на {{ name|lower }}</a>
+</div>

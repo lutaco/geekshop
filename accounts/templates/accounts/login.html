@@ -1,0 +1,13 @@
+{% extends 'server/master.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Вход
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {% include 'server/form.html' with form=form %}
+    </form>
+{% endblock %}

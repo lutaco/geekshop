@@ -1,0 +1,23 @@
+{% extends 'server/master.html' %}
+{% load staticfiles %}
+{% load paginator %}
+
+{% block title %}
+	Каталог продуктов
+{% endblock %}
+
+{% block page_static %}
+<link rel="stylesheet" href="{% static 'products/css/list.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1 class="page__title">
+       	Каталог
+    </h1>
+    <div class="products">
+    	{% for product in object.product_set.all|paginate:request.GET %}
+            {% include 'includes/product_item.html' with image=product.image name=product.name description=product.description cost=product.cost id=product.id %}
+		{% endfor %}
+    </div>
+        {% pagination object.product_set.all %}
+{% endblock %}
